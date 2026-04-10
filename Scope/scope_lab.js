@@ -26,6 +26,21 @@ function show() {
     const functionConst = "I'm a block-scoped const"
 }
 
-console.log(functionVar);
-console.log(functionLet);
-console.log(functionConst);
+// console.log(functionVar);
+// console.log(functionLet);
+// console.log(functionConst);
+
+{
+    var blockVar2 = "I'm a block-scoped var";
+    let blockLet2 = "I'm a block-scoped let";
+    const blockConst2 = "I'm a block-scoped const";
+
+    blockVar2 = 1
+    blockLet2 = "something different"
+    // blockConst2 = "can't change"
+}
+
+blockVar2 = "var changed outside the block"; // implicit global variable in Sloppy Mode
+blockLet2 = "let changed outside the block"; // implicit global variable in Sloppy Mode
+
+console.log(blockLet2);
