@@ -67,7 +67,8 @@ const buildBookHtml = (book, index) => {
         <p><strong>Author Name:</strong> ${book.authorName}</p>
         <p><strong>Book Description:</strong> ${book.bookDescription}</p>
         <p><strong>No. of Pages:</strong> ${book.pagesNumber} page(s)</p>
-        <button onclick="editbook(${index})">Edit</button>`;
+        <button onclick="editbook(${index})">Edit</button>
+        <button onclick="deletebook(${index})">Delete</button>`;
 }
 
 /**
@@ -82,6 +83,18 @@ const editbook = (index) => {
     setElementValue('pagesNumber', book.pagesNumber);
     books.splice(index, 1); // Remove old entry
     renderBooks(); // Refresh list
+}
+
+/**
+ * Deletes the book at the given index
+ * 
+ * Should check if book exists but that's for another time
+ * 
+ * @param {number} index 
+ */
+const deletebook = (index) => {
+    books.splice(index, 1);
+    renderBooks();
 }
 
 /**
@@ -132,8 +145,6 @@ const setElementValue = (id, value) => {
  * @returns 
  */
 const isValidBook = (book) => {
-    console.log(book);
     let result = book.name && book.authorName && book.bookDescription && !isNaN(book.pagesNumber);
-    console.log(Boolean(book.name));
     return result;
 }
